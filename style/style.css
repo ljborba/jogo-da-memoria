@@ -8,6 +8,10 @@
 
 body {
     font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .card {
@@ -66,4 +70,11 @@ body {
     border: none;
     border-radius: 2rem;
     margin-top: 1.5rem;
+}
+
+#gameBoard {
+    max-width: 700px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 1.5rem;
 }
