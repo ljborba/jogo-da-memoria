@@ -12,7 +12,9 @@ let techs = ["bootstrap",
     "node",
     "react"];
 
-createCardsFromTechs(techs);
+let cards = null;
+
+    starGame();
 
 function createCardsFromTechs(techs) {
     let cards = [];
@@ -31,9 +33,26 @@ function createPairFromTech(tech) {
         id: createIdWithTech(tech),
         icon: tech,
         flipped: false,
-    }]
+    }];
 };
 
 function createIdWithTech(tech) {
     return tech + parseInt(Math.random() * 1000);
-}
+};
+
+function starGame() {
+    cards = createCardsFromTechs(techs);
+    shuffleCards(cards);
+    console.log(cards);
+};
+
+function shuffleCards(cards) {
+    let currentIndex = cards.length;
+    let randomIndex = 0;
+
+        while(currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]];
+        };
+};
