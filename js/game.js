@@ -6,20 +6,28 @@ let game = {
 
     setCard : function(id) {
         let card = this.cards.filter(card=>card.id===id)[0];
+        
+        console.log(card);
+
             if(card.flipped || this.lockMode) {
                 return false;
             };
                 if(!this.firstCard) {
                     this.firstCard = card;
+                    this.firstCard.flipped = true;
                     return true;
                 } else {
                     this.secondCard = card;
+                    this.secondCard.flipped = true;
                     this.lockMode = true;
                     return true;
                 };
     },
 
     checkMatch : function() {
+        if(!this.firstCard || !this.secondCard) {
+            return false;
+        }
         return this.firstCard.icon === this.secondCard.icon;
     },
 
@@ -77,5 +85,11 @@ let game = {
                 currentIndex--;
                 [this.cards[randomIndex], this.cards[currentIndex]] = [this.cards[currentIndex], this.cards[randomIndex]];
             };
+    },
+
+    unflipCards() {
+        this.firstCard.flipped = false;
+        this.secondCard.flipped = false;
+        this.clearCards();
     }
 }
