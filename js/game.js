@@ -6,9 +6,6 @@ let game = {
 
     setCard : function(id) {
         let card = this.cards.filter(card=>card.id===id)[0];
-        
-        console.log(card);
-
             if(card.flipped || this.lockMode) {
                 return false;
             };
@@ -91,5 +88,9 @@ let game = {
         this.firstCard.flipped = false;
         this.secondCard.flipped = false;
         this.clearCards();
+    },
+
+    checkGameOver() {
+        return this.cards.filter(card=>!card.flipped).length == 0;
     }
 }
